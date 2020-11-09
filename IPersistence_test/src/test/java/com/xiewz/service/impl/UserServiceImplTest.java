@@ -1,8 +1,7 @@
-package java.com.xiewz.service.impl;
+package com.xiewz.service.impl;
 
 import com.xiewz.pojo.User;
 import com.xiewz.service.UserService;
-import com.xiewz.service.impl.UserServiceImpl;
 import org.junit.Test;
 
 import java.util.List;
