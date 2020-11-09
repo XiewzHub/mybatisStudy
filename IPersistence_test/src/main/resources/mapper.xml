@@ -1,4 +1,4 @@
-<mapper namespace="User">
+<mapper namespace="user">
 
     <select id="selectOne" paramterType="com.xiewz.pojo.User" resultType="com.xiewz.pojo.User">
         select * from user where id = #{id} and username =#{username}
