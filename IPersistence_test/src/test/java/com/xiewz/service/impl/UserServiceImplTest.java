@@ -1,9 +1,16 @@
 package com.xiewz.service.impl;
 
+import com.xiewz.io.Resources;
 import com.xiewz.pojo.User;
 import com.xiewz.service.UserService;
+import com.xiewz.session.SqlSession;
+import com.xiewz.session.SqlSessionFactory;
+import com.xiewz.session.SqlSessionFactoryBuilder;
+import org.dom4j.DocumentException;
 import org.junit.Test;
 
+import java.beans.PropertyVetoException;
+import java.io.InputStream;
 import java.util.List;
 
 
@@ -22,5 +29,28 @@ public class UserServiceImplTest {
         for (User user : list) {
             System.out.println(user);
         }
+    }
+
+    @Test
+    public void test() throws Exception {
+        // 配置文件流
+        InputStream resourceAsSteam = Resources.getResourceAsSteam("sqlMapConfig.xml");
+        SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory build = sqlSessionFactoryBuilder.build(resourceAsSteam);
+        SqlSession sqlSession = build.openSession();
+
+        User query = new User();
+        query.setId(1);
+        query.setUsername("lucy");
+
+
+        User userOne = sqlSession.selectOne("user.selectOne", query);
+        System.out.println(userOne);
+
+        List<User> users = sqlSession.selectList("user.selectList");
+        for (User user : users) {
+            System.out.println(user);
+        }
+
     }
 }

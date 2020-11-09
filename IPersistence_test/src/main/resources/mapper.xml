@@ -4,7 +4,7 @@
         select * from user where id = #{id} and username =#{username}
     </select>
 
-    <select id="selectList" resultType="com.lagou.pojo.User">
+    <select id="selectList" resultType="com.xiewz.pojo.User">
         select * from user
     </select>
 </mapper>
