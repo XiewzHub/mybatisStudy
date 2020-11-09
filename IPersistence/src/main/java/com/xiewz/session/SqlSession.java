@@ -13,4 +13,6 @@ public interface SqlSession {
 
     //根据条件查询单个
     public <T> T selectOne(String statementid,Object... params) throws Exception;
+
+    public <T> T getMapper(Class<? extends T> mapperClass);
 }

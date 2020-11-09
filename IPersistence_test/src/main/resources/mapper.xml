@@ -1,10 +1,10 @@
-<mapper namespace="user">
-
-    <select id="selectOne" paramterType="com.xiewz.pojo.User" resultType="com.xiewz.pojo.User">
+<mapper namespace="com.xiewz.dao.IUserDao">
+<!--namespace对应底层dao接口类路径，方便java通过该路径加载类  select id修改为该类中的方法名，方便java动态代理该方法的实现-->
+    <select id="findByCondition" paramterType="com.xiewz.pojo.User" resultType="com.xiewz.pojo.User">
         select * from user where id = #{id} and username =#{username}
     </select>
 
-    <select id="selectList" resultType="com.xiewz.pojo.User">
+    <select id="findAll" resultType="com.xiewz.pojo.User">
         select * from user
     </select>
 </mapper>

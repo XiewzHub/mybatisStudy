@@ -19,9 +19,23 @@ import java.util.List;
 
 public class SimpleExecutor implements Executor {
 
+    /**
+     * 使用jdbc进行数据库查询操作
+     * 1. 获取jdbc的相关对象
+     * 2. 解析sql语句，用？代替参数#{},同时解析#{}内部参数名并存储
+     * 3. 根据参数名匹配参数值并设置
+     * 4. 执行并返回
+     *
+     * @param configuration 配置器
+     * @param mappedStatement mapper配置，sql语句映射等
+     * @param params 参数
+     * @param <E>
+     * @return
+     * @throws Exception
+     */
     public <E> List<E> query(Configuration configuration, MappedStatement mappedStatement, Object... params) throws Exception {
         // 底层执行器使用jdbc进行数据库查寻操作
-// 1. 注册驱动，获取连接
+        // 1. 注册驱动，获取连接
         Connection connection = configuration.getDataSource().getConnection();
 
         // 2. 获取sql语句 : select * from user where id = #{id} and username = #{username}

@@ -9,6 +9,7 @@ public class DefautSqlSessionFactory implements SqlSessionFactory {
         this.configuration = configuration;
     }
 
+    @Override
     public SqlSession openSession() {
         SqlSession sqlSession = new DefaultSqlSession(configuration);
         return sqlSession;

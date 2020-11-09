@@ -1,5 +1,6 @@
 package com.xiewz.service.impl;
 
+import com.xiewz.dao.IUserDao;
 import com.xiewz.io.Resources;
 import com.xiewz.pojo.User;
 import com.xiewz.service.UserService;
@@ -44,13 +45,23 @@ public class UserServiceImplTest {
         query.setUsername("lucy");
 
 
-        User userOne = sqlSession.selectOne("user.selectOne", query);
+        /*User userOne = sqlSession.selectOne("user.selectOne", query);
         System.out.println(userOne);
 
         List<User> users = sqlSession.selectList("user.selectList");
         for (User user : users) {
             System.out.println(user);
-        }
+        }*/
 
+        IUserDao mapper = sqlSession.getMapper(IUserDao.class);
+
+        User user = mapper.findByCondition(query);
+        System.out.println(user);
+
+        System.out.println("--------------------");
+        List<User> all = mapper.findAll();
+        for (User user1 : all) {
+            System.out.println(user1);
+        }
     }
 }

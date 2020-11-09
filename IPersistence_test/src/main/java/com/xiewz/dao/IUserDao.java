@@ -5,9 +5,9 @@ import com.xiewz.pojo.User;
 import java.util.List;
 
 public interface IUserDao {
-    List<User> findAll();
+    List<User> findAll() throws Exception;
 
-    User findByCondition();
+    User findByCondition(User query) throws Exception;
 
 
 }
