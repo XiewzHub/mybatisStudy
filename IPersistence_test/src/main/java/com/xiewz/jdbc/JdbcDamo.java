@@ -14,9 +14,9 @@ public class JdbcDamo {
         try {
 
             // 加载数据库驱动
-            Class.forName("com.mysql.jdbc.Drver");
+            Class.forName("com.mysql.jdbc.Driver");
             // 通过驱动管理类获取数据库链接
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8", "root", "root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test?characterEncoding=utf-8", "root", "root");
 
             // 定义sql语句?表示占位符
             String sql = "select * from user where username = ?";
@@ -37,10 +37,16 @@ public class JdbcDamo {
 
                 System.out.println(user);
             }
-        } finally {
-            resultSet.close();
-            preparedStatement.close();
-            connection.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            if (resultSet != null)
+                resultSet.close();
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
 
         }
 
