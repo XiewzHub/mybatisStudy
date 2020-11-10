@@ -1,0 +1,39 @@
+@startuml
+
+
+interface SqlSession {
+    public <E> List<E> selectList(String statementid, Object... params) throws Exception;
+    public <T> T selectOne(String statementid,Object... params) throws Exception;
+    public <T> T getMapper(Class<? extends T> mapperClass);
+}
+interface SqlSessionFactory {
+    SqlSession openSession();
+}
+
+
+interface Executor {
+  执行器，底层使用jdbc
+  <E> List<E> query(Configuration configuration, MappedStatement mappedStatement, Object... params);
+}
+
+
+class SqlSessionFactoryBuilder {
+    public SqlSessionFactory build(InputStream in ) {}
+}
+class DefaultSqlSession implements SqlSession
+class DefautSqlSessionFactory implements SqlSessionFactory
+class SimpleExecutor implements Executor {
+ 1. 获取jdbc的相关对象
+ 2. 解析sql语句，用？代替参数#{},同时解析#{}内部参数名并存储
+ 3. 根据参数名匹配参数值并设置
+ 4. 执行并返回
+}
+
+
+SqlSessionFactoryBuilder *..> DefautSqlSessionFactory : "build默认工厂"
+DefautSqlSessionFactory "1" *..> "N" DefaultSqlSession : "生产SqlSession"
+DefaultSqlSession o.. SimpleExecutor:"底层：\n调用执行器的query方法"
+
+
+
+@enduml
