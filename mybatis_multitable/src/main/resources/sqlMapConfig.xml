@@ -60,15 +60,15 @@
     <mappers>
 <!--        对于完全限定资源定位符url -->
 
-<!--        使用映射器接口实现类的完全限定名 -->
+<!--        使用映射器接口实现类的完全限定名 注解方式需要使用 -->
 <!--        <mapper class="com.xiewz.mapper.IUserMapper"></mapper>-->
 
 <!--        对于想对类路径的资源引用-->
-       <mapper resource="IUserMapper.xml"></mapper>
-       <mapper resource="IOrderMapper.xml"></mapper>
+<!--       <mapper resource="IUserMapper.xml"></mapper>-->
+<!--       <mapper resource="IOrderMapper.xml"></mapper>-->
         <!--<package name="com.xiewz.mapper"/>为啥扫包就不行？-->
-<!--        将包内的映射器接口全部实现注册为映射器 -->
-<!--        <package name="com.xiewz.mapper"/>-->
+<!--        将包内的映射器接口全部实现注册为映射器 这里加了注解后又可以扫包了 -->
+        <package name="com.xiewz.mapper"/>
 <!--        <mapper ></mapper>-->
     </mappers>
 

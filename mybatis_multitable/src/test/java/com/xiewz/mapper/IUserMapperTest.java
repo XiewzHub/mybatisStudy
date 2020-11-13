@@ -7,6 +7,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -52,6 +53,60 @@ public class IUserMapperTest {
         for (User user : allUserAndRole) {
             System.out.println(user);
             System.out.println("==========");
+        }
+    }
+
+    private IUserMapper userMapper ;
+    private IOrderMapper orderMapper ;
+    @Before
+    public void before(){
+        InputStream resourceAsStream = Resources.class.getClassLoader().getResourceAsStream("sqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+        userMapper = sqlSession.getMapper(IUserMapper.class);
+        orderMapper = sqlSession.getMapper(IOrderMapper.class);
+    }
+
+    @Test
+    public void addUser(){
+        User user = new User();
+        user.setId(3);
+        user.setUsername("测试数据");
+        user.setPassword("123");
+        user.setBirthday("2020-01-01");
+
+        userMapper.addUser(user);
+    }
+
+    @Test
+    public void updateUser(){
+        User user = new User();
+        user.setId(3);
+        user.setUsername("修改了测试数据");
+
+        userMapper.updateUser(user);
+
+    }
+
+    @Test
+    public void selectUser(){
+        List<User> users = userMapper.selectUser();
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
+    @Test
+    public void deleteUser(){
+        userMapper.deleteUser(3);
+    }
+
+    @Test
+    public void oneToMany(){
+        List<Order> userAndOrder = orderMapper.findUserAndOrder();
+        for (Order order : userAndOrder) {
+            System.out.println(order);
         }
     }
 

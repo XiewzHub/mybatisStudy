@@ -14,6 +14,10 @@ public class User implements Serializable {
     private Integer id;
 
     private String username;
+    private String password;
+    private String birthday;
+
+
 
 
 
@@ -38,8 +42,21 @@ public class User implements Serializable {
         this.orderList = orderList;
     }
 
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
 
     public Integer getId() {
         return id;
