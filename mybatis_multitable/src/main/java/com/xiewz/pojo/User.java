@@ -5,53 +5,41 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-@Table(name = "user")
+//@Table(name = "user")
 public class User implements Serializable {
 
-    @Id //对应的是注解id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //设置主键的生成策略
     private Integer id;
 
     private String username;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                '}';
+
+
+//        表示用户关联的订单
+    private List<Order> orderList = new ArrayList<>();
+
+    private List<Role> roles = new ArrayList<>();
+
+    public List<Role> getRoles() {
+        return roles;
     }
-    //    //表示用户关联的订单
-//    private List<Order> orderList = new ArrayList<>();
-//
-//    //表示用户关联的角色
-//    private List<Role> roleList = new ArrayList<>();
-//
-//    public List<Order> getOrderList() {
-//        return orderList;
-//    }
-//
-//    public void setOrderList(List<Order> orderList) {
-//        this.orderList = orderList;
-//    }
-//
-//    public List<Role> getRoleList() {
-//        return roleList;
-//    }
-//
-//    public void setRoleList(List<Role> roleList) {
-//        this.roleList = roleList;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "id=" + id +
-//                ", username='" + username + '\'' +
-//                ", roleList=" + roleList +
-//                '}';
-//    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
+
+
 
     public Integer getId() {
         return id;
@@ -67,5 +55,14 @@ public class User implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }

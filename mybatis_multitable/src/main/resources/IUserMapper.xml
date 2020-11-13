@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiewz.mapper.IUserMapper">
+    <resultMap id="userMap" type="com.xiewz.pojo.User">
+        <result property="id" column="id"></result>
+        <result property="username" column="username"></result>
+        <collection property="orderList" ofType="com.xiewz.pojo.Order">
+            <result property="id" column="oid"></result>
+            <result property="orderTime" column="ordertime"></result>
+            <result property="total" column="total"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findAll" resultMap="userMap">
+        select u.*,o.id oid,o.ordertime,o.total,o.uid
+            from user u
+         left join orders o on u.id = o.uid
+    </select>
+
+
+    <resultMap id="userRoleMap" type="com.xiewz.pojo.User">
+        <result property="id" column="userid"></result>
+        <result property="username" column="username"></result>
+        <collection property="roles" ofType="com.xiewz.pojo.Role">
+            <result property="id" column="roleid"></result>
+            <result property="roleName" column="roleName"></result>
+            <result property="roleDesc" column="roleDesc"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findAllUserAndRole" resultMap="userRoleMap">
+        select * from user u left join sys_user_role sur on u.id = sur.userid
+left join sys_role sr on sur.roleid = sr.id
+    </select>
+
+</mapper>
