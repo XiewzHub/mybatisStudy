@@ -10,9 +10,9 @@
 
 
     <!--开启二级缓存  -->
-<!--    <settings>-->
-<!--        <setting name="cacheEnabled" value="true"/>-->
-<!--    </settings>-->
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
 
 
 
@@ -69,7 +69,6 @@
         <!--<package name="com.xiewz.mapper"/>为啥扫包就不行？-->
 <!--        将包内的映射器接口全部实现注册为映射器 这里加了注解后又可以扫包了 -->
         <package name="com.xiewz.mapper"/>
-<!--        <mapper ></mapper>-->
     </mappers>
 
 

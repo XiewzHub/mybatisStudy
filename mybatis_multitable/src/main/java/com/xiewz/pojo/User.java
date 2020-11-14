@@ -1,9 +1,5 @@
 package com.xiewz.pojo;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +20,14 @@ public class User implements Serializable {
 //        表示用户关联的订单
     private List<Order> orderList = new ArrayList<>();
 
-    private List<Role> roles = new ArrayList<>();
+    private List<Role> roleList = new ArrayList<>();
 
-    public List<Role> getRoles() {
-        return roles;
+    public List<Role> getRoleList() {
+        return roleList;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
     }
 
     public List<Order> getOrderList() {
@@ -74,12 +70,24 @@ public class User implements Serializable {
         this.username = username;
     }
 
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "id=" + id +
+//                ", username='" + username + '\'' +
+//                ", roles=" + roles +
+//                '}';
+//    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", roles=" + roles +
+                ", password='" + password + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", orderList=" + orderList +
+                ", roleList=" + roleList +
                 '}';
     }
 }
