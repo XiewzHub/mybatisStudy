@@ -24,21 +24,21 @@
         <package name="com.xiewz.pojo"/>
     </typeAliases>
 
-<!--    <plugins>
- &lt;!&ndash;       <plugin interceptor="com.lagou.plugin.MyPlugin">
-            <property name="name" value="tom"/>
-        </plugin>&ndash;&gt;
+    <plugins>
+        <plugin interceptor="com.xiewz.plugin.MyPlugin">
+            <property name="name" value="tom123"/>
+        </plugin>
 
-        <plugin interceptor="com.github.pagehelper.PageHelper">
+        <!--<plugin interceptor="com.github.pagehelper.PageHelper">
             <property name="dialect" value="mysql"/>
         </plugin>
 
         <plugin interceptor="tk.mybatis.mapper.mapperhelper.MapperInterceptor">
             &lt;!&ndash;指定当前通用mapper接口使用的是哪一个&ndash;&gt;
             <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
-        </plugin>
+        </plugin>-->
 
-    </plugins>-->
+    </plugins>
 
 
     <!--environments:运行环境-->

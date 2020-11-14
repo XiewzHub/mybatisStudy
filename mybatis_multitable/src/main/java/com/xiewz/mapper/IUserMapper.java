@@ -8,8 +8,9 @@ import org.mybatis.caches.redis.RedisCache;
 
 import java.util.List;
 
-//@CacheNamespace(implementation = RedisCache.class)//开启二级缓存
-@CacheNamespace
+
+@CacheNamespace(implementation = RedisCache.class)//开启二级缓存
+//@CacheNamespace
 public interface IUserMapper {
 
     @Select("select * from user")
