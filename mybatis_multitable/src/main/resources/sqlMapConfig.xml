@@ -29,14 +29,14 @@
             <property name="name" value="tom123"/>
         </plugin>
 
-        <!--<plugin interceptor="com.github.pagehelper.PageHelper">
+        <plugin interceptor="com.github.pagehelper.PageHelper">
             <property name="dialect" value="mysql"/>
         </plugin>
 
         <plugin interceptor="tk.mybatis.mapper.mapperhelper.MapperInterceptor">
-            &lt;!&ndash;指定当前通用mapper接口使用的是哪一个&ndash;&gt;
+            <!--指定当前通用mapper接口使用的是哪一个-->
             <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
-        </plugin>-->
+        </plugin>
 
     </plugins>
 

@@ -1,12 +1,18 @@
 package com.xiewz.pojo;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Table(name = "user")
+@Table(name = "user")
 public class User implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String username;
@@ -18,25 +24,25 @@ public class User implements Serializable {
 
 
 //        表示用户关联的订单
-    private List<Order> orderList = new ArrayList<>();
+//    private List<Order> orderList = new ArrayList<>();
+//
+//    private List<Role> roleList = new ArrayList<>();
 
-    private List<Role> roleList = new ArrayList<>();
-
-    public List<Role> getRoleList() {
-        return roleList;
-    }
-
-    public void setRoleList(List<Role> roleList) {
-        this.roleList = roleList;
-    }
-
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
-    }
+//    public List<Role> getRoleList() {
+//        return roleList;
+//    }
+//
+//    public void setRoleList(List<Role> roleList) {
+//        this.roleList = roleList;
+//    }
+//
+//    public List<Order> getOrderList() {
+//        return orderList;
+//    }
+//
+//    public void setOrderList(List<Order> orderList) {
+//        this.orderList = orderList;
+//    }
 
     public String getPassword() {
         return password;
@@ -86,8 +92,6 @@ public class User implements Serializable {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", birthday='" + birthday + '\'' +
-                ", orderList=" + orderList +
-                ", roleList=" + roleList +
                 '}';
     }
 }

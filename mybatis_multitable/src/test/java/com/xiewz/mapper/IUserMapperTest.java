@@ -1,5 +1,7 @@
 package com.xiewz.mapper;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.xiewz.pojo.Order;
 import com.xiewz.pojo.Role;
 import com.xiewz.pojo.User;
@@ -9,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
+import tk.mybatis.mapper.entity.Example;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,20 +32,22 @@ public class IUserMapperTest {
         System.out.println(userAndRole);
     }
 
-    @Test
-    public void test2() throws IOException {
-        InputStream resourceAsStream = Resources.class.getClassLoader().getResourceAsStream("sqlMapConfig.xml");
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
+//    @Test
+//    public void test2() throws IOException {
+//        InputStream resourceAsStream = Resources.class.getClassLoader().getResourceAsStream("sqlMapConfig.xml");
+//        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+//        SqlSession sqlSession = sqlSessionFactory.openSession();
+//
+//        IUserMapper mapper = sqlSession.getMapper(IUserMapper.class);
+//        List<User> users = mapper.findAll();
+//        for (User user : users) {
+//            System.out.println(user.getUsername());
+//            System.out.println(user.getOrderList());
+//            System.out.println("==========");
+//        }
+//    }
 
-        IUserMapper mapper = sqlSession.getMapper(IUserMapper.class);
-        List<User> users = mapper.findAll();
-        for (User user : users) {
-            System.out.println(user.getUsername());
-            System.out.println(user.getOrderList());
-            System.out.println("==========");
-        }
-    } @Test
+    @Test
     public void test3() throws IOException {
         InputStream resourceAsStream = Resources.class.getClassLoader().getResourceAsStream("sqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
@@ -127,5 +132,46 @@ public class IUserMapperTest {
         }
     }
 
+    @Test
+    public void pageHelperTest(){
+
+        PageHelper.startPage(1,1);
+        List<User> users = userMapper.selectUser();
+        for (User user : users) {
+            System.out.println(user);
+        }
+
+        PageInfo<User> pageInfo = new PageInfo<>(users);
+        System.out.println("总条数："+pageInfo.getTotal());
+        System.out.println("总页数："+pageInfo.getPages());
+        System.out.println("当前页："+pageInfo.getPageNum());
+        System.out.println("每页显示的条数："+pageInfo.getPageSize());
+
+
+    }
+
+    @Test
+    public void mapperPluginTest() throws IOException {
+
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = new User();
+        user.setId(1);
+
+        User user1 = mapper.selectOne(user);
+        System.out.println(user1);
+
+        System.out.println("---------------------");
+        // example方法查询
+        Example example = new Example(User.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("id",1);
+
+        List<User> users = mapper.selectByExample(example);
+        System.out.println(users);
+    }
 
 }
