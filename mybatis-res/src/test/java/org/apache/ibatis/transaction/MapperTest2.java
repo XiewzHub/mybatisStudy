@@ -21,7 +21,8 @@ public class MapperTest2 {
 
         User user = sqlSession.selectOne("com.xiewz.mapper.IUserMapper.lazyfindUserById",1);
 
-        System.out.println(user);
+        System.out.println(user.getUsername());
+        System.out.println(user.getOrderList());
 
     }
 }

@@ -41,7 +41,7 @@ left join sys_role sr on sur.roleid = sr.id
     <resultMap id="userOrderMap" type="com.xiewz.pojo.User"  >
         <result property="id" column="userid"></result>
         <result property="username" column="username"></result>
-        <collection property="orderList" ofType="com.xiewz.pojo.Order" select="com.xiewz.mapper.IOrderMapper.findByUid" column="id">
+        <collection property="orderList" ofType="com.xiewz.pojo.Order" select="com.xiewz.mapper.IOrderMapper.findByUid" column="id" fetchType="lazy">
             <result property="id" column="roleid"></result>
             <result property="orderTime" column="orderTime"></result>
             <result property="total" column="total"></result>
