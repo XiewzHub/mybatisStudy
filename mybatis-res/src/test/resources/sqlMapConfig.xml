@@ -10,10 +10,10 @@
 
 
     <!--开启二级缓存  -->
-    <!--<settings>
-        <setting name="cacheEnabled" value="true"/>
+    <settings>
+<!--        <setting name="cacheEnabled" value="true"/>-->
         <setting name="lazyLoadingEnabled" value="true"/>
-    </settings>-->
+    </settings>
 
 
 
