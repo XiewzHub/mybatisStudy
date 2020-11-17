@@ -16,6 +16,7 @@ public class LagouMpSpringbootApplicationTests {
 
 	@Autowired
 	private UserMapper userMapper;
+
 	@Test
 	public void testSelect() {
 		List<User> userList = userMapper.selectList(null);
