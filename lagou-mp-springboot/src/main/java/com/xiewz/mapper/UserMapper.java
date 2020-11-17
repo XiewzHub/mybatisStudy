@@ -7,7 +7,9 @@ import com.xiewz.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
-@Component
-@Mapper
+//@Component
+//@Mapper
 public interface UserMapper extends BaseMapper<User> {
+
+    public User findById(Long id);
 }

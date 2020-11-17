@@ -31,7 +31,8 @@ public class LagouMpSpringbootApplicationTests {
 	}
 	@Test
 	public void testSelectById() {
-		User user1 = userMapper.selectById(1);
+		User user1 = userMapper.findById(1L);
+		System.out.println();
 		System.out.println(user1);
 	}
 
