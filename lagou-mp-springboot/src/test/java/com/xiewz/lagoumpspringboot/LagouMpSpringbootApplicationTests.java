@@ -1,6 +1,6 @@
 package com.xiewz.lagoumpspringboot;
 
-import com.xiewz.com.xiewz.mapper.UserMapper;
+import com.xiewz.mapper.UserMapper;
 import com.xiewz.pojo.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
