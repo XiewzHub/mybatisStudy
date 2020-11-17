@@ -37,6 +37,26 @@ public class LagouMpSpringbootApplicationTests {
 	}
 
 	@Test
+	public void testInsert(){
+		User user = new User();
+		user.setAge(35);
+		user.setName("lisi");
+		user.setEmail("fde@123.com");
+		userMapper.insert(user);
+		System.out.println("--------------");
+		System.out.println(user.getId());
+
+		User user1 = userMapper.selectById(user.getId());
+		System.out.println("--------------");
+		System.out.println(user1);
+
+		int i = userMapper.deleteById(user.getId());
+		System.out.println("--------------");
+		System.out.println("删除："+(i>0));
+
+	}
+
+	@Test
 	public void testSelectPage() {
 
 		Page<User> userPage = new Page<>(1, 3);
