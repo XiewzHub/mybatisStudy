@@ -99,7 +99,7 @@ mysql 手写
 
 
 ## 代码结构图
-![类结构](puml/mysql.png)
+![mysql.png](http://ww1.sinaimg.cn/large/e8450fe4gy1gl33d6ydrzj20pv0h3wfq.jpg)
 
 
 ## 代码实现
